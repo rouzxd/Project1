@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device width, initial-scale=1.0">
+        <title>MP3 Browser player</title>
+    </head>
+    <body>
+        <h1>MP3 Browser player</h1>
+        <audio id="audioPlayer" controls>
+            <source src="your-audio-file.mp3"type="audio/mpeg">
+        </audio>
+        <p>Выберите файл mp3(кнопка ниже)</p>
+        <input type="file" id="fileInput" accept="audio/mp3">
+        <script>
+            const audioPlayer = document.getElementById('audioPlayer');
+            const fileInput = document.getElementById('fileInput');
+            fileInput.addEventListener('change', function(event) {
+                const file = event.target.files[0];
+                if(file) {
+                    const url = URL.createObjectURL(file);
+                    audioPlayer.src = url;
+                    audioPlayer.play();
+                }
+            });
+        </script>
+    </body>
+</html>
+*made by hanakoKZ*
